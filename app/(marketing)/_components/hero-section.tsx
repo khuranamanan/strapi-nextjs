@@ -3,17 +3,19 @@ import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import React from "react";
+import SafariImg from "@/assets/images/SafariImg.png";
+import Image from "next/image";
 
 function HeroSection() {
   return (
     <section className="space-y-12 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32 relative">
-      {/* <div
+      <div
         className="absolute inset-0 blur-xl -z-10"
         style={{
           background:
             "linear-gradient(143.6deg, rgba(192, 132, 252, 0) 20.79%, rgba(0, 182, 134, 0.26) 40.92%, rgba(204, 171, 238, 0) 70.35%)",
         }}
-      ></div> */}
+      ></div>
 
       <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
         <Link
@@ -46,10 +48,12 @@ function HeroSection() {
       </div>
 
       <div className="max-w-screen-xl mx-auto px-4">
-        <img
-          src="https://raw.githubusercontent.com/sidiDev/remote-assets/main/Safari%20(Big%20Sur)%20-%20Light.png"
+        <Image
+          src={SafariImg}
+          alt="SafariImg"
           className="w-full shadow-lg rounded-lg border"
-          alt=""
+          width={1200}
+          height={800}
         />
       </div>
     </section>
