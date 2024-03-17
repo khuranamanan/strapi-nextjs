@@ -61,7 +61,7 @@ async function getPostBySlug(slug: string): Promise<BlogItemType> {
   }
 }
 
-export async function getMetaData(slug: string) {
+async function getMetaData(slug: string) {
   const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
   try {
     const response = await fetch(
