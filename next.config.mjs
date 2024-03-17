@@ -28,6 +28,11 @@ const nextConfig = {
         hostname,
         port,
       },
+      {
+        protocol: "https",
+        hostname: "strapi-nextjs-frontend.vercel.app",
+        pathname: "/**",
+      },
     ],
   },
 };
