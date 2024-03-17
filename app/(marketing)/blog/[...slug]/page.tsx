@@ -1,7 +1,4 @@
 import { notFound } from "next/navigation";
-// import { allAuthors, allPosts } from "contentlayer/generated";
-
-import { Mdx } from "@/components/mdx-components";
 
 // import "@/styles/mdx.css";
 import { Metadata } from "next";
@@ -13,7 +10,7 @@ import { cn, formatDate } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 // import { Icons } from "@/components/icons";
 import { ChevronLeft } from "lucide-react";
-import { allPosts } from "@/content/Post";
+
 import { getStrapiMedia, getStrapiURL } from "@/lib/strapi/api-helpers";
 import QueryString from "qs";
 import { Block, BlogItemType } from "@/types/blog";

@@ -1,17 +1,14 @@
-import Link from "next/link"
+import Link from "next/link";
 
-import { siteConfig } from "@/config/site"
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
-import HeroSection from "./_components/hero-section"
-import FeaturesSection from "./_components/features-section"
+import { siteConfig } from "@/config/site";
+import HeroSection from "./_components/hero-section";
+import FeaturesSection from "./_components/features-section";
 
 export default async function IndexPage() {
-
   return (
     <>
-      <HeroSection/>
-      <FeaturesSection/>
+      <HeroSection />
+      <FeaturesSection />
       <section id="open-source" className="container py-8 md:py-12 lg:py-24">
         <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
           <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
@@ -30,9 +27,8 @@ export default async function IndexPage() {
             </Link>
             .{" "}
           </p>
-         
         </div>
       </section>
     </>
-  )
+  );
 }
