@@ -1,17 +1,22 @@
+const { protocol, hostname, port, pathname } = new URL(
+  process.env.NEXT_PUBLIC_STRAPI_API_URL
+);
+
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "127.0.0.1",
-        port: "1337",
-        pathname: "/uploads/**",
+        protocol: protocol.slice(0, -1),
+        hostname,
+        port,
+        pathname: `${pathname}/**`,
       },
       {
-        protocol: "https",
-        hostname: "images.pexels.com",
+        protocol: protocol.slice(0, -1),
+        hostname,
+        port,
       },
     ],
   },
