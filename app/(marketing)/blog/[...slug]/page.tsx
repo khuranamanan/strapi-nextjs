@@ -1,14 +1,10 @@
 import { notFound } from "next/navigation";
-
-// import "@/styles/mdx.css";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-// import { env } from "@/env.mjs";
 import { cn, formatDate } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
-// import { Icons } from "@/components/icons";
 import { ChevronLeft } from "lucide-react";
 
 import { getStrapiMedia, getStrapiURL } from "@/lib/strapi/api-helpers";
@@ -37,8 +33,8 @@ async function getPostBySlug(slug: string): Promise<BlogItemType> {
         { encode: false }
       )}`,
       {
+        cache: "force-cache",
         headers: {
-          cache: "force-cache",
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
@@ -50,7 +46,6 @@ async function getPostBySlug(slug: string): Promise<BlogItemType> {
     }
 
     const data = await response.json();
-    console.log("data", data);
     return data;
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -72,8 +67,8 @@ async function getMetaData(slug: string) {
         { encode: false }
       )}`,
       {
+        cache: "force-cache",
         headers: {
-          cache: "force-cache",
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },

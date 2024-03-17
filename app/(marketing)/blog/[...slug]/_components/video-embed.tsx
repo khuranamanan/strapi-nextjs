@@ -24,7 +24,7 @@ const getEmbedUrl = (videoUrl: string): string | null => {
 
 export default function VideoEmbed({ data }: { data: Block }) {
   if (!data.url) return null;
-console.log(data.url)
+
   const embedUrl = getEmbedUrl(data.url);
 
   if (!embedUrl) return <div>Invalid video URL</div>;
