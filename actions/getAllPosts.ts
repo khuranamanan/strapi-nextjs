@@ -17,7 +17,8 @@ export async function getAllPosts(): Promise<BlogListType> {
         { encode: false }
       )}`,
       {
-        cache: "force-cache",
+        // cache: "force-cache",
+        next: { revalidate: 60 },
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",

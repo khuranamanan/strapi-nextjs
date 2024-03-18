@@ -34,7 +34,8 @@ async function getPostBySlug(slug: string): Promise<BlogItemType> {
         { encode: false }
       )}`,
       {
-        cache: "force-cache",
+        // cache: "force-cache",
+        next: { revalidate: 60 },
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -68,7 +69,8 @@ async function getMetaData(slug: string) {
         { encode: false }
       )}`,
       {
-        cache: "force-cache",
+        // cache: "force-cache",
+        next: { revalidate: 60 },
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -104,13 +106,13 @@ export async function generateMetadata({
   };
 }
 
-export async function generateStaticParams() {
-  const posts = await getAllPosts();
-  const paths = posts.data.map((post) => ({
-    params: { slug: post.attributes.slug },
-  }));
-  return paths;
-}
+// export async function generateStaticParams() {
+//   const posts = await getAllPosts();
+//   const paths = posts.data.map((post) => ({
+//     params: { slug: post.attributes.slug },
+//   }));
+//   return paths;
+// }
 
 export default async function PostPage({ params: { slug } }: PostPageProps) {
   const post = await getPostBySlug(slug);
