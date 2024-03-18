@@ -5,45 +5,11 @@ import { formatDate } from "@/lib/utils";
 import QueryString from "qs";
 import { BlogListType } from "@/types/blog";
 import { getStrapiMedia, getStrapiURL } from "@/lib/strapi/api-helpers";
+import { getAllPosts } from "@/actions/getAllPosts";
 
 export const metadata = {
   title: "Blog",
 };
-
-async function getAllPosts(): Promise<BlogListType> {
-  const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
-  try {
-    const response = await fetch(
-      `${getStrapiURL()}/api/articles?${QueryString.stringify(
-        {
-          sort: { createdAt: "desc" },
-          populate: {
-            cover: { fields: ["formats"] },
-            category: { fields: ["name", "slug"] },
-          },
-        },
-        { encode: false }
-      )}`,
-      {
-        cache: "force-cache",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error("Failed to fetch data");
-    }
-
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    return {} as BlogListType;
-  }
-}
 
 export default async function BlogPage() {
   const posts = await getAllPosts();

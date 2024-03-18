@@ -11,6 +11,7 @@ import { getStrapiMedia, getStrapiURL } from "@/lib/strapi/api-helpers";
 import QueryString from "qs";
 import { Block, BlogItemType } from "@/types/blog";
 import { BlockRenderer } from "./_components/block-renderer";
+import { getAllPosts } from "@/actions/getAllPosts";
 
 interface PostPageProps {
   params: { slug: string };
@@ -101,6 +102,14 @@ export async function generateMetadata({
     title: metadata?.metaTitle,
     description: metadata?.metaDescription,
   };
+}
+
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
+  const paths = posts.data.map((post) => ({
+    params: { slug: post.attributes.slug },
+  }));
+  return paths;
 }
 
 export default async function PostPage({ params: { slug } }: PostPageProps) {
